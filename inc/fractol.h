@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 17:05:36 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/26 15:08:33 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/26 15:17:57 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,14 @@
 
 # include "libft.h"
 
+static	t_fractal g_fractals[] =
+{
+
+};
+
 typedef struct              s_fractal
 {
-	/* data */
+	
 }                           t_fractal;
 
 

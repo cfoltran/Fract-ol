@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 16:53:47 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/02/26 15:15:27 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/02/26 15:16:29 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		main(int argc, char **argv)
 		return (1);
 	}
 	else if (ft_strcmp("help", argv[1]) == 0)
-		ft_putstr("1 : Suite de Mandelbrot 1\n2 : Suite de Julia\n");
+		ft_putstr("1 : Suite de Mandelbrot\n2 : Suite de Julia\n");
 	else if (fractol(ft_atoi(argv[1])))
 		return (1);
 	return (0);
