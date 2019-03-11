@@ -6,7 +6,7 @@
 #    By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/07 16:39:44 by cvignal           #+#    #+#              #
-#    Updated: 2019/02/27 11:14:29 by clfoltra         ###   ########.fr        #
+#    Updated: 2019/03/11 10:03:03 by clfoltra         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ NAME	:=	fractol
 
 SRC		=	fractol.c \
 			hook.c \
+			draw.c \
 
 SRCDIR	:=	src
 OBJDIR	:=	obj

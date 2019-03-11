@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 16:53:47 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/03/07 17:40:56 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/03/11 13:23:26 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,7 @@ int		refresh(t_env *env)
 		&img.s_line, &img.endian)))
 		return (errors(MLX));
 	env->img = &img;
-	for (int i = 2; i < env->win_h * env->win_w; i++)
-		env->img->datas[i] = 0xFFFFFF;
-	if (!(mlx_put_image_to_window(env->mlx, env->window, env->img->image
-		, 0, 0)))
-		return (errors(MLX));
+	draw(env);
 	display_usage(env);
 	mlx_destroy_image(env->mlx, env->img->image);
 	return (0);
@@ -64,10 +60,10 @@ int		fractol(int arg)
 {
 	t_env	env;
 
-	env.threads = NULL;
 	env.pannel = 1;
 	env.win_h = WINDOW_H;
 	env.win_w = WINDOW_W;
+	env.thr_w = WINDOW_W / THREADS;
 	env.arg = arg;
 	if (!init_mlx(&env))
 		return (1);
