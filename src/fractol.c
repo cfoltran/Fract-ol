@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 16:53:47 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/03/11 13:23:26 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/03/13 18:09:01 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,11 @@ int		refresh(t_env *env)
 		return (errors(MLX));
 	env->img = &img;
 	draw(env);
+	// for (int i = 0; i < WINDOW_H * WINDOW_W; i++)
+	// 	env->img->datas[i] = rand() % (((0xFFFF00 + 1) - 0x0000010) + 0xFFFFFF);
 	display_usage(env);
+	if (!(mlx_put_image_to_window(env->mlx, env->window, env->img->image, 0, 0)))
+		return (errors(MLX));
 	mlx_destroy_image(env->mlx, env->img->image);
 	return (0);
 }

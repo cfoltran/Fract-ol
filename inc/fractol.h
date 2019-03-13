@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 17:05:36 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/03/11 13:17:18 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/03/13 18:18:56 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <stdio.h>
 
 ////////////////////////////
-# define WINDOW_W	1500
+# define WINDOW_W	1400
 # define WINDOW_H	900
 # define THREADS	4
 # define USG		1
@@ -48,9 +48,10 @@ typedef struct		s_env {
 	int				win_h;
 	int				thr_w;
 	int				thr_h;
+	int				color;
+	int				x;
 	int				y;
 	int				y_max;
-	int				x;
 	int				arg;
 	t_img			*img;
 }					t_env;
