@@ -6,7 +6,7 @@
 /*   By: clfoltra <clfoltra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 16:53:47 by clfoltra          #+#    #+#             */
-/*   Updated: 2019/03/13 18:09:01 by clfoltra         ###   ########.fr       */
+/*   Updated: 2019/03/15 15:27:05 by clfoltra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,16 @@ int		refresh(t_env *env)
 		return (errors(MLX));
 	env->img = &img;
 	draw(env);
-	// for (int i = 0; i < WINDOW_H * WINDOW_W; i++)
-	// 	env->img->datas[i] = rand() % (((0xFFFF00 + 1) - 0x0000010) + 0xFFFFFF);
-	display_usage(env);
-	if (!(mlx_put_image_to_window(env->mlx, env->window, env->img->image, 0, 0)))
-		return (errors(MLX));
+	// if (env->x < env->win_w && env->y < env->win_w && env->x > 0 && env->y > 0)
+	// {
+	// 	printf("i : %d", env->x + (env->y - 1) * env->win_w);
+	// 	env->img->datas[env->x + (env->y - 1) * env->win_w] = 0xFFFFFF;
+	// }
+	// printf(" x : %d y : %d\n", env->x, env->y);
+	// if (!(mlx_put_image_to_window(env->mlx, env->window, env->img->image, 0, 0)))
+	// 	return (errors(MLX));
+	if (env->pannel)
+		display_usage(env);
 	mlx_destroy_image(env->mlx, env->img->image);
 	return (0);
 }
@@ -60,15 +65,27 @@ int		init_mlx(t_env *env)
 	return (0);
 }
 
-int		fractol(int arg)
+void	mandelbrot_init(t_env *env)
+{
+	env->it_max = 50;
+	env->zoom = 100;
+	env->x1 = -2.05;
+	env->y1 = -1.3;
+	env->color = 9999999;
+	env->x = 0;
+}
+
+int		fractol(char *arg)
 {
 	t_env	env;
 
+	if (ft_strcmp(arg, "mandelbrot") == 0)
+		mandelbrot_init(&env);
 	env.pannel = 1;
 	env.win_h = WINDOW_H;
 	env.win_w = WINDOW_W;
 	env.thr_w = WINDOW_W / THREADS;
-	env.arg = arg;
+	env.th_test = 0;
 	if (!init_mlx(&env))
 		return (1);
 	return (0);
@@ -79,12 +96,12 @@ int		main(int argc, char **argv)
 	(void)argv;
 	if (argc != 2)
 	{
-		ft_putendl_fd("Usage : ./fractol <fractal id> <help>", 2);
+		ft_putendl_fd("Usage : ./fractol <fractal name> <help>", 2);
 		return (1);
 	}
-	else if (ft_strcmp("help", argv[1]) == 0)
-		ft_putstr("1 : Suite de Mandelbrot\n2 : Suite de Julia\n");
-	else if (fractol(ft_atoi(argv[1])))
+	else if (ft_strcmp(argv[1], "help") == 0)
+		ft_putstr("./fractol [ mandelbrot | julia | burning ship ]\n");
+	else if (fractol(argv[1]))
 		return (1);
 	return (0);
 }
